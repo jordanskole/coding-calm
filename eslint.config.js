@@ -1,5 +1,5 @@
 import stylistic from "@stylistic/eslint-plugin"
-import react from "eslint-plugin-react"
+import nextPlugin from "@next/eslint-plugin-next"
 
 const defaults = stylistic.configs.customize({
   indent: 2,
@@ -10,6 +10,15 @@ const defaults = stylistic.configs.customize({
 
 export default [
   defaults,
+  {
+    plugins: {
+      "@next/next": nextPlugin,
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
+    },
+  },
   {
     rules: {
       "@stylistic/jsx-one-expression-per-line": ["error", { allow: "none" }],
